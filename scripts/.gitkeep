@@ -1,0 +1,11 @@
+# This file ensures the scripts folder is tracked by Git
+
+This folder is reserved for SQL scripts including:
+- Database schema creation scripts
+- Data population scripts
+- Stored procedures
+- Views and triggers
+- Test scripts
+- Migration scripts
+
+Note: SQL files will be added here during database implementation.

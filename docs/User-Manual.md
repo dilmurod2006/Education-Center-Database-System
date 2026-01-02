@@ -334,7 +334,7 @@ The Education Center Database System manages:
 *[To be completed: Common error messages and solutions]*
 
 | Error Message | Cause | Solution |
-|--------------|-------|----------|
+|---------------|-------|----------|
 | Access Denied | Insufficient permissions | Contact administrator for access |
 | Duplicate Entry | Record already exists | Check existing records |
 | Connection Timeout | Network issues | Retry connection |

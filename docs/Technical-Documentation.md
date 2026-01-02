@@ -3,6 +3,7 @@
 ## Education Center Database System
 
 ### Document Information
+
 - **Project**: Education Center Database System
 - **Unit**: BTEC Unit 10 - Database Design & Development
 - **Version**: 1.0
@@ -11,6 +12,7 @@
 ---
 
 ## Table of Contents
+
 1. [System Architecture](#system-architecture)
 2. [Database Specifications](#database-specifications)
 3. [Table Structures](#table-structures)
@@ -28,31 +30,37 @@
 ## 1. System Architecture
 
 ### Database Platform
-*[To be completed: Specify the DBMS]*
+
+_[To be completed: Specify the DBMS]_
+
 - **DBMS**: MySQL / PostgreSQL / SQL Server
-- **Version**: 
+- **Version**:
 - **Character Set**: UTF-8
-- **Collation**: 
+- **Collation**:
 
 ### System Requirements
-*[To be completed: Hardware and software requirements]*
+
+_[To be completed: Hardware and software requirements]_
 
 **Server Requirements:**
-- Processor: 
-- RAM: 
-- Storage: 
-- Operating System: 
+
+- Processor:
+- RAM:
+- Storage:
+- Operating System:
 
 **Client Requirements:**
-- SQL Client Tool: 
-- Network Requirements: 
+
+- SQL Client Tool:
+- Network Requirements:
 
 ---
 
 ## 2. Database Specifications
 
 ### Database Configuration
-*[To be completed: Database settings]*
+
+_[To be completed: Database settings]_
 
 ```sql
 -- Example configuration
@@ -62,18 +70,19 @@
 ```
 
 ### Naming Conventions
-*[To be completed: Define naming standards]*
 
-| Object Type | Convention | Example |
-|-------------|------------|---------|
-| Tables | PascalCase, Plural | Students, Courses |
-| Columns | PascalCase | StudentID, FirstName |
-| Primary Keys | PK_{TableName} | PK_Students |
-| Foreign Keys | FK_{TableName}_{RefTable} | FK_Enrollments_Students |
-| Indexes | IX_{TableName}_{ColumnName} | IX_Students_Email |
-| Views | VW_{ViewName} | VW_ActiveStudents |
-| Stored Procedures | SP_{ActionName} | SP_EnrollStudent |
-| Triggers | TR_{TableName}_{Action} | TR_Students_Insert |
+_[To be completed: Define naming standards]_
+
+| Object Type       | Convention                  | Example                 |
+| ----------------- | --------------------------- | ----------------------- |
+| Tables            | PascalCase, Plural          | Students, Courses       |
+| Columns           | PascalCase                  | StudentID, FirstName    |
+| Primary Keys      | PK\_{TableName}             | PK_Students             |
+| Foreign Keys      | FK*{TableName}*{RefTable}   | FK_Enrollments_Students |
+| Indexes           | IX*{TableName}*{ColumnName} | IX_Students_Email       |
+| Views             | VW\_{ViewName}              | VW_ActiveStudents       |
+| Stored Procedures | SP\_{ActionName}            | SP_EnrollStudent        |
+| Triggers          | TR*{TableName}*{Action}     | TR_Students_Insert      |
 
 ---
 
@@ -82,7 +91,8 @@
 ### Core Tables
 
 #### 3.1 Students Table
-*[To be completed: Detailed table structure]*
+
+_[To be completed: Detailed table structure]_
 
 ```sql
 -- Students table structure
@@ -98,7 +108,8 @@
 **Dependencies**: None (Base table)
 
 #### 3.2 Courses Table
-*[To be completed: Detailed table structure]*
+
+_[To be completed: Detailed table structure]_
 
 ```sql
 -- Courses table structure
@@ -109,19 +120,23 @@
 **Dependencies**: None (Base table)
 
 #### 3.3 Instructors Table
-*[To be completed: Detailed table structure]*
+
+_[To be completed: Detailed table structure]_
 
 **Purpose**: Store instructor information
 **Dependencies**: None (Base table)
 
 #### 3.4 Enrollments Table
-*[To be completed: Detailed table structure]*
+
+_[To be completed: Detailed table structure]_
 
 **Purpose**: Manage student course enrollments
 **Dependencies**: Students, Courses
 
 #### 3.5 Additional Tables
-*[To be completed: Define additional tables as needed]*
+
+_[To be completed: Define additional tables as needed]_
+
 - Payments
 - Attendance
 - Schedules
@@ -133,14 +148,17 @@
 ## 4. Relationships & Constraints
 
 ### Entity Relationships
-*[To be completed: Define all relationships]*
+
+_[To be completed: Define all relationships]_
 
 #### Primary Key Constraints
+
 ```sql
 -- To be implemented
 ```
 
 #### Foreign Key Constraints
+
 ```sql
 -- Example:
 -- ALTER TABLE Enrollments
@@ -151,7 +169,8 @@
 ```
 
 #### Check Constraints
-*[To be completed: Business rule constraints]*
+
+_[To be completed: Business rule constraints]_
 
 ```sql
 -- Examples:
@@ -162,7 +181,8 @@
 ```
 
 #### Unique Constraints
-*[To be completed: Unique constraints]*
+
+_[To be completed: Unique constraints]_
 
 ```sql
 -- Examples:
@@ -175,9 +195,11 @@
 ## 5. Stored Procedures
 
 ### Purpose
-*[To be completed: List and describe stored procedures]*
+
+_[To be completed: List and describe stored procedures]_
 
 #### 5.1 Student Management
+
 ```sql
 -- SP_EnrollStudent
 -- Purpose: Enroll a student in a course
@@ -185,6 +207,7 @@
 ```
 
 #### 5.2 Course Management
+
 ```sql
 -- SP_CreateCourse
 -- Purpose: Add a new course to the catalog
@@ -192,6 +215,7 @@
 ```
 
 #### 5.3 Payment Processing
+
 ```sql
 -- SP_ProcessPayment
 -- Purpose: Record student payment
@@ -199,6 +223,7 @@
 ```
 
 #### 5.4 Reporting
+
 ```sql
 -- SP_GenerateEnrollmentReport
 -- Purpose: Generate enrollment statistics
@@ -210,9 +235,11 @@
 ## 6. Views
 
 ### Purpose
-*[To be completed: Define database views]*
+
+_[To be completed: Define database views]_
 
 #### 6.1 Active Students View
+
 ```sql
 -- VW_ActiveStudents
 -- Purpose: List currently enrolled students
@@ -220,6 +247,7 @@
 ```
 
 #### 6.2 Course Enrollment View
+
 ```sql
 -- VW_CourseEnrollments
 -- Purpose: Show courses with enrollment counts
@@ -227,6 +255,7 @@
 ```
 
 #### 6.3 Payment Summary View
+
 ```sql
 -- VW_PaymentSummary
 -- Purpose: Financial summary by student
@@ -238,9 +267,11 @@
 ## 7. Triggers
 
 ### Purpose
-*[To be completed: Define database triggers]*
+
+_[To be completed: Define database triggers]_
 
 #### 7.1 Audit Triggers
+
 ```sql
 -- TR_Students_Update
 -- Purpose: Log changes to student records
@@ -248,6 +279,7 @@
 ```
 
 #### 7.2 Business Logic Triggers
+
 ```sql
 -- TR_Enrollments_Insert
 -- Purpose: Validate enrollment business rules
@@ -259,12 +291,15 @@
 ## 8. Indexes
 
 ### Indexing Strategy
-*[To be completed: Define indexes for performance]*
+
+_[To be completed: Define indexes for performance]_
 
 #### Primary Indexes
-*[Automatically created with primary keys]*
+
+_[Automatically created with primary keys]_
 
 #### Secondary Indexes
+
 ```sql
 -- Examples:
 -- CREATE INDEX IX_Students_Email ON Students(Email);
@@ -273,24 +308,27 @@
 ```
 
 ### Index Performance Considerations
-*[To be completed: Justify index choices]*
+
+_[To be completed: Justify index choices]_
 
 ---
 
 ## 9. Security Implementation
 
 ### User Roles
-*[To be completed: Define database roles and permissions]*
 
-| Role | Description | Permissions |
-|------|-------------|-------------|
-| Admin | Full system access | ALL PRIVILEGES |
+_[To be completed: Define database roles and permissions]_
+
+| Role       | Description                   | Permissions            |
+| ---------- | ----------------------------- | ---------------------- |
+| Admin      | Full system access            | ALL PRIVILEGES         |
 | Instructor | Course and student management | SELECT, INSERT, UPDATE |
-| Staff | Registration and payments | SELECT, INSERT, UPDATE |
-| ReadOnly | Reports and queries | SELECT |
+| Staff      | Registration and payments     | SELECT, INSERT, UPDATE |
+| ReadOnly   | Reports and queries           | SELECT                 |
 
 ### Security Best Practices
-*[To be completed: Document security measures]*
+
+_[To be completed: Document security measures]_
 
 - Password policies
 - Connection encryption
@@ -303,26 +341,31 @@
 ## 10. Backup & Recovery
 
 ### Backup Strategy
-*[To be completed: Define backup procedures]*
+
+_[To be completed: Define backup procedures]_
 
 **Backup Schedule:**
-- Full backup: 
-- Incremental backup: 
-- Transaction log backup: 
+
+- Full backup:
+- Incremental backup:
+- Transaction log backup:
 
 **Backup Location:**
-- Primary: 
-- Secondary: 
+
+- Primary:
+- Secondary:
 
 ### Recovery Procedures
-*[To be completed: Document recovery steps]*
+
+_[To be completed: Document recovery steps]_
 
 ---
 
 ## 11. Performance Optimization
 
 ### Query Optimization
-*[To be completed: Document optimization strategies]*
+
+_[To be completed: Document optimization strategies]_
 
 - Use of appropriate indexes
 - Query execution plan analysis
@@ -330,7 +373,8 @@
 - Proper JOIN usage
 
 ### Database Maintenance
-*[To be completed: Maintenance tasks]*
+
+_[To be completed: Maintenance tasks]_
 
 - Regular index rebuilding
 - Statistics updates
@@ -342,6 +386,7 @@
 ## Appendix A: SQL Scripts Location
 
 All SQL implementation scripts are located in the `/scripts` folder:
+
 - Schema creation scripts
 - Data population scripts
 - Stored procedure definitions
@@ -352,15 +397,15 @@ All SQL implementation scripts are located in the `/scripts` folder:
 
 ## Appendix B: Change Log
 
-| Date | Version | Author | Changes |
-|------|---------|--------|---------|
-| Jan 2026 | 1.0 | Dilmurod | Initial template created |
+| Date     | Version | Author   | Changes                  |
+| -------- | ------- | -------- | ------------------------ |
+| Jan 2026 | 1.0     | Dilmurod | Initial template created |
 
 ---
 
 ## Appendix C: References
 
-*[To be completed: List references and resources]*
+_[To be completed: List references and resources]_
 
 - Database design principles
 - SQL standards documentation
@@ -369,5 +414,5 @@ All SQL implementation scripts are located in the `/scripts` folder:
 
 ---
 
-*Document Status: Template Created - Awaiting Implementation*
-*Last Updated: January 2026*
+_Document Status: Template Created - Awaiting Implementation_
+_Last Updated: January 2026_

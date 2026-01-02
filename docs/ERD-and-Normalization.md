@@ -1,200 +1,95 @@
-# ERD & Normalization Documentation
+erDiagram
+STUDENTS ||--o{ ENROLLMENTS : "registers"
+GROUPS ||--o{ ENROLLMENTS : "contains"
+COURSES ||--o{ GROUPS : "categorized_into"
+TEACHERS ||--o{ GROUPS : "teaches"
+SCHEDULES ||--o{ GROUPS : "scheduled_at"
+COURSE_CATEGORIES ||--o{ COURSES : "belongs_to"
+SPECIALIZATIONS ||--o{ TEACHERS : "specializes_in"
+ENROLLMENTS ||--o{ ATTENDANCE : "tracks"
+ENROLLMENTS ||--o{ PAYMENTS : "billed_to"
+PAYMENT_METHODS ||--o{ PAYMENTS : "paid_via"
 
-## Entity Relationship Diagram (ERD)
+    STUDENTS {
+        int student_id PK
+        string first_name
+        string last_name
+        date dob
+        string email UK
+        string phone
+        timestamp registration_date
+    }
 
-### Purpose
-This document contains the Entity Relationship Diagrams for the Education Center Database System and details the normalization process applied to ensure data integrity and eliminate redundancy.
+    TEACHERS {
+        int teacher_id PK
+        string first_name
+        string last_name
+        int spec_id FK
+        string email UK
+        string phone
+    }
 
----
+    SPECIALIZATIONS {
+        int spec_id PK
+        string spec_name UK
+    }
 
-## 1. Conceptual ERD
+    COURSES {
+        int course_id PK
+        string course_name
+        int category_id FK
+        text description
+        decimal course_fee
+    }
 
-### Overview
-*[To be completed: High-level overview of entities and their relationships]*
+    COURSE_CATEGORIES {
+        int category_id PK
+        string category_name UK
+    }
 
-### Key Entities
-*[To be completed: List of main entities to be included in the database]*
+    GROUPS {
+        int group_id PK
+        int course_id FK
+        int teacher_id FK
+        int schedule_id FK
+        date start_date
+        date end_date
+    }
 
-#### Example Entities:
-- Students
-- Courses
-- Instructors
-- Enrollments
-- Payments
-- Attendance
-- Schedules
-- Rooms
+    SCHEDULES {
+        int schedule_id PK
+        string day_of_week
+        time start_time
+        time end_time
+    }
 
----
+    ENROLLMENTS {
+        int enrollment_id PK
+        int student_id FK
+        int group_id FK
+        date enrollment_date
+    }
 
-## 2. Logical ERD
+    ATTENDANCE {
+        int attendance_id PK
+        int enrollment_id FK
+        date attendance_date
+        enum status
+    }
 
-### Entity Definitions
-*[To be completed: Detailed description of each entity with attributes]*
+    PAYMENTS {
+        int payment_id PK
+        int enrollment_id FK
+        int method_id FK
+        decimal amount
+        timestamp payment_date
+    }
 
-#### Example Entity Structure:
+    PAYMENT_METHODS {
+        int method_id PK
+        string method_name UK
+    }
 
-**Students**
-- StudentID (PK)
-- FirstName
-- LastName
-- DateOfBirth
-- Email
-- Phone
-- Address
-- EnrollmentDate
-
-**Courses**
-- CourseID (PK)
-- CourseName
-- Description
-- Duration
-- Fee
-- Category
-
-*[Continue with other entities]*
-
----
-
-## 3. Physical ERD
-
-### Database Schema Diagram
-*[To be completed: Insert ERD diagram image or create using draw.io, Lucidchart, or dbdiagram.io]*
-
-### Relationship Types
-*[To be completed: Detail the cardinality of relationships]*
-
-| Entity 1 | Relationship | Entity 2 | Type |
-|----------|--------------|----------|------|
-| Students | enrolls in | Courses | Many-to-Many |
-| Courses | taught by | Instructors | Many-to-Many |
-| Students | makes | Payments | One-to-Many |
-| Students | has | Attendance | One-to-Many |
-
----
-
-## 4. Normalization Process
-
-### Unnormalized Form (UNF)
-*[To be completed: Show initial data structure with repeating groups]*
-
-#### Example UNF:
-```
-Student(StudentID, StudentName, CourseID, CourseName, InstructorName, 
-        Payment1Date, Payment1Amount, Payment2Date, Payment2Amount, ...)
-```
-
-### First Normal Form (1NF)
-*[To be completed: Eliminate repeating groups]*
-
-**Rules Applied:**
-- Remove repeating groups
-- Ensure atomic values
-- Identify primary keys
-
-#### Example 1NF:
-```
-Student(StudentID, StudentName)
-Course(CourseID, CourseName, InstructorName)
-Payment(PaymentID, StudentID, PaymentDate, PaymentAmount)
 ```
 
-### Second Normal Form (2NF)
-*[To be completed: Remove partial dependencies]*
-
-**Rules Applied:**
-- Must be in 1NF
-- Remove partial dependencies on composite keys
-- Create separate tables for subsets of data
-
-#### Example 2NF:
 ```
-Student(StudentID, StudentName)
-Course(CourseID, CourseName)
-Instructor(InstructorID, InstructorName)
-CourseInstructor(CourseID, InstructorID)
-Payment(PaymentID, StudentID, PaymentDate, PaymentAmount)
-```
-
-### Third Normal Form (3NF)
-*[To be completed: Remove transitive dependencies]*
-
-**Rules Applied:**
-- Must be in 2NF
-- Remove transitive dependencies
-- Ensure all non-key attributes depend only on the primary key
-
-#### Example 3NF:
-*[Final normalized table structure to be documented here]*
-
----
-
-## 5. Data Dictionary
-
-### Table Specifications
-
-#### Students Table
-*[To be completed: Complete data dictionary for each table]*
-
-| Column Name | Data Type | Length | Null | Key | Default | Description |
-|-------------|-----------|--------|------|-----|---------|-------------|
-| StudentID | INT | - | NO | PK | Auto | Unique student identifier |
-| FirstName | VARCHAR | 50 | NO | - | - | Student's first name |
-| LastName | VARCHAR | 50 | NO | - | - | Student's last name |
-
-*[Continue for all tables]*
-
----
-
-## 6. Integrity Constraints
-
-### Primary Keys
-*[To be completed: List all primary keys]*
-
-### Foreign Keys
-*[To be completed: List all foreign key relationships]*
-
-### Check Constraints
-*[To be completed: List business rules implemented as constraints]*
-
-### Unique Constraints
-*[To be completed: List unique constraints beyond primary keys]*
-
----
-
-## 7. Design Decisions & Rationale
-
-### Key Design Choices
-*[To be completed: Explain important design decisions]*
-
-#### Examples:
-1. **Enrollment as Junction Table**: Chosen to implement many-to-many relationship between Students and Courses
-2. **Separate Payment Table**: Allows multiple payment records per student
-3. **Attendance Tracking**: Linked to specific class sessions
-
----
-
-## 8. Assumptions
-
-*[To be completed: List assumptions made during database design]*
-
-### Examples:
-- Each course can have multiple instructors over time
-- Students can enroll in multiple courses simultaneously
-- Payments are tracked separately from enrollments
-- Each class session requires attendance tracking
-
----
-
-## Notes
-- ERD diagrams can be created using tools like:
-  - draw.io (free, web-based)
-  - Lucidchart
-  - dbdiagram.io
-  - MySQL Workbench
-  - Microsoft Visio
-
----
-
-*Document Status: Template Created - Awaiting Implementation*
-*Last Updated: January 2026*
